@@ -10,19 +10,24 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController, AVAudioPlayerDelegate {
-    
+    // MARK:- Properties
     var player: AVAudioPlayer!
     var timer: Timer!
     
+    // MARK: IBOutlets
     @IBOutlet var playPauseButton: UIButton!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var progressSlider: UISlider!
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.addViewsWithCode()
         self.initializePlayer()
     }
 
+    // MARK: - Methods
+    // MARK: Custom Method
     func initializePlayer() {
         guard let soundAsset: NSDataAsset = NSDataAsset(name: "sound") else {
             print("음원 파일 에셋을 가져올 수 없습니다")
@@ -159,6 +164,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         self.progressSlider = slider
     }
     
+    // MARK: IBActions
     @IBAction func touchUpPlayPauseButton(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         
@@ -181,6 +187,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         self.player.currentTime = TimeInterval(sender.value)
     }
     
+    // MARK: AVAudioPlayerDelegate
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         
         guard let error: Error = error else {
