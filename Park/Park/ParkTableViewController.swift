@@ -22,7 +22,7 @@ class ParkTableViewController: UITableViewController, XMLParserDelegate {
         let url = "http://openapi.seoul.go.kr:8088/73646c5059636c61313033614e616c51/xml/SearchParkInformationByAddressService/1/5/%EA%B0%95%EB%82%A8"
         
         guard let xmlParser = XMLParser(contentsOf: URL(string: url)!) else { return }
-        xmlParser.delegate = self;
+        xmlParser.delegate = self
         xmlParser.parse()
         
     }
