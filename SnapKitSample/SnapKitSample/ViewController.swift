@@ -78,7 +78,5 @@ class ViewController: UIViewController {
             make.right.bottom.equalTo(-20)
         }
     }
-    
-    
 }
 
