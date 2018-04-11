@@ -37,9 +37,11 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
             make.edges.equalTo(self.view)
         }
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 8
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.customCell, for: indexPath) as! CustomCell
         return cell
@@ -47,6 +49,7 @@ class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSou
 }
 
 class CustomCell: UITableViewCell {
+    
     static var customCell = "cell"
     
     let customImageView: UIImageView = {
