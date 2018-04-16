@@ -13,6 +13,8 @@
 		9E70E15D2081ECBB00BAB641 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E70E15B2081ECBB00BAB641 /* LaunchScreen.storyboard */; };
 		9E70E1702082056500BAB641 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70E16F2082056500BAB641 /* PhotosCollectionViewCell.swift */; };
 		9E70E17220820C2E00BAB641 /* MainAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70E17120820C2E00BAB641 /* MainAlbumViewController.swift */; };
+		9E70E174208469A000BAB641 /* GroupAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70E173208469A000BAB641 /* GroupAlbumViewController.swift */; };
+		9E70E17620846AE900BAB641 /* GroupPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E70E17520846AE900BAB641 /* GroupPhotosCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		9E70E15E2081ECBC00BAB641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E70E16F2082056500BAB641 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		9E70E17120820C2E00BAB641 /* MainAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAlbumViewController.swift; sourceTree = "<group>"; };
+		9E70E173208469A000BAB641 /* GroupAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAlbumViewController.swift; sourceTree = "<group>"; };
+		9E70E17520846AE900BAB641 /* GroupPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 				9E70E15B2081ECBB00BAB641 /* LaunchScreen.storyboard */,
 				9E70E15E2081ECBC00BAB641 /* Info.plist */,
 				9E70E16F2082056500BAB641 /* PhotosCollectionViewCell.swift */,
+				9E70E17520846AE900BAB641 /* GroupPhotosCollectionViewCell.swift */,
 			);
 			path = MyAlbum;
 			sourceTree = "<group>";
@@ -71,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				9E70E17120820C2E00BAB641 /* MainAlbumViewController.swift */,
+				9E70E173208469A000BAB641 /* GroupAlbumViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -147,7 +153,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E70E1532081ECBA00BAB641 /* AppDelegate.swift in Sources */,
+				9E70E17620846AE900BAB641 /* GroupPhotosCollectionViewCell.swift in Sources */,
 				9E70E17220820C2E00BAB641 /* MainAlbumViewController.swift in Sources */,
+				9E70E174208469A000BAB641 /* GroupAlbumViewController.swift in Sources */,
 				9E70E1702082056500BAB641 /* PhotosCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

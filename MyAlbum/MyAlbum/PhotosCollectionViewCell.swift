@@ -9,8 +9,6 @@
 import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var photoCount: UILabel!
-    @IBOutlet weak var albumTitle: UILabel!
+
     @IBOutlet weak var imageView: UIImageView!
 }

@@ -40,12 +40,17 @@ class MainAlbumViewController: UIViewController, UICollectionViewDataSource, UIC
                                     cell.imageView.image = image
 
         })
-        let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
+//        let getAlbums: PHFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .any, options: nil)
+//        for i in 0 ..< getAlbums.count {
+//            let assetCollection: PHAssetCollection = getAlbums[i] as PHAssetCollection
+//            print(assetCollection.localizedTitle)
+//            //print(assetCollection.estimatedAssetCount)
+//
+//        }
         
-        let cameraRollCollection = cameraRoll.firstObject
-        
-        cell.albumTitle.text = cameraRollCollection?.localizedTitle
-      
+//        let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
+//        let cameraRollCollection = cameraRoll.firstObject
+                
         return cell
     }
     
@@ -83,7 +88,6 @@ class MainAlbumViewController: UIViewController, UICollectionViewDataSource, UIC
         
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        //self.fetchResult = PH
         self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions)
     }
 }
