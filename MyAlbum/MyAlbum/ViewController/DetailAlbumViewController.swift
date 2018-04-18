@@ -9,13 +9,12 @@
 import UIKit
 import Photos
 class DetailAlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    var albumLabel = [String]()
     
-    var fetchResult: PHFetchResult<PHAsset>!
-    var imageManager: PHCachingImageManager = PHCachingImageManager()
     var reuseIdentifier: String = "DetailCell"
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.fetchResult.count
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -28,7 +27,6 @@ class DetailAlbumViewController: UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
 

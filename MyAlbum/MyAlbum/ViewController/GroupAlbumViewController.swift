@@ -40,6 +40,14 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailAlbumViewController()
+        detailVC.albumLabel = self.albumLabel
+        let cell = collectionView.cellForItem(at: indexPath)
+       
+        
+    }
+    
     func photoAuthorization() {
         let photoAurthorizationStatus = PHPhotoLibrary.authorizationStatus()
         
@@ -93,6 +101,7 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
         
         self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions)
         photoCount.append(fetchResult.count)
+        
         imageManager.requestImage(for: fetchResult.object(at: 0),
                                           targetSize: CGSize(width: 170, height: 170),
                                           contentMode: .aspectFit,
