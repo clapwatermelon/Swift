@@ -13,6 +13,7 @@ class GroupPhotosCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var photoCount: UILabel!
     @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -21,7 +22,6 @@ class GroupPhotosCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         self.setImageView()
     }
     

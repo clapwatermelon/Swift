@@ -22,6 +22,7 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
     var albumLabel: [String] = []
     var photoCount: [Int] = []
     var imageArray = [UIImage]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         photoAuthorization()
@@ -42,10 +43,8 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailAlbumViewController()
-        detailVC.albumLabel = self.albumLabel
-        let cell = collectionView.cellForItem(at: indexPath)
-       
-        
+        detailVC.albumLabel = self.albumLabel[indexPath.item]
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     func photoAuthorization() {
