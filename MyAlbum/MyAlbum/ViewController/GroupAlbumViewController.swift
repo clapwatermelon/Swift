@@ -9,7 +9,7 @@
 import UIKit
 import Photos
 
-class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
 
     var fetchResult: PHFetchResult<PHAsset>!
@@ -43,8 +43,13 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = DetailAlbumViewController()
-        detailVC.albumLabel = self.albumLabel[indexPath.item]
-        self.navigationController?.pushViewController(detailVC, animated: true)
+       detailVC.albumTitle = self.albumLabel[indexPath.item]
+        print(detailVC.albumTitle)
+//        self.navigationController?.pushViewController(detailVC, animated: true)
+        
+        let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailAlbumViewController")
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func photoAuthorization() {
