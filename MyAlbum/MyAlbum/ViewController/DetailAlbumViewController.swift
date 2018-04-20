@@ -20,7 +20,6 @@ class DetailAlbumViewController: UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = albumTitle
-        print(self.title)
         requestCollection()
         
     }
@@ -36,8 +35,6 @@ class DetailAlbumViewController: UIViewController, UICollectionViewDataSource, U
         cell.backgroundColor = UIColor.blue
         return cell
     }
-
-    
 
     func requestCollection() {
         let fetchOptions = PHFetchOptions()
@@ -59,7 +56,51 @@ class DetailAlbumViewController: UIViewController, UICollectionViewDataSource, U
                                         self.imageArray.append(image!)
                 })
             }
-
+        case "Favorites":
+            let favorites: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
+            guard let favoritesCollection = favorites.firstObject else {
+                return
+            }
+            self.fetchResult = PHAsset.fetchAssets(in: favoritesCollection, options: fetchOptions)
+            for i in 0..<self.fetchResult.count {
+                imageManager.requestImage(for: fetchResult.object(at: i),
+                                          targetSize: CGSize(width: 110, height: 110),
+                                          contentMode: .aspectFit,
+                                          options: nil,
+                                          resultHandler: { image, _ in
+                                            self.imageArray.append(image!)
+                })
+            }
+        case "Selfies":
+            let selfies: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: nil)
+            guard let selfiesCollection = selfies.firstObject else {
+                return
+            }
+            self.fetchResult = PHAsset.fetchAssets(in: selfiesCollection, options: fetchOptions)
+            for i in 0..<self.fetchResult.count {
+                imageManager.requestImage(for: fetchResult.object(at: i),
+                                          targetSize: CGSize(width: 110, height: 110),
+                                          contentMode: .aspectFit,
+                                          options: nil,
+                                          resultHandler: { image, _ in
+                                            self.imageArray.append(image!)
+                })
+            }
+        case "네이버 클라우드 앨범":
+            let userAlbum: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: nil)
+            guard let userCollection = userAlbum.firstObject else {
+                return
+            }
+            self.fetchResult = PHAsset.fetchAssets(in: userCollection, options: fetchOptions)
+            for i in 0..<self.fetchResult.count {
+                imageManager.requestImage(for: fetchResult.object(at: i),
+                                          targetSize: CGSize(width: 110, height: 110),
+                                          contentMode: .aspectFit,
+                                          options: nil,
+                                          resultHandler: { image, _ in
+                                            self.imageArray.append(image!)
+                })
+            }
         default:
             ()
         }

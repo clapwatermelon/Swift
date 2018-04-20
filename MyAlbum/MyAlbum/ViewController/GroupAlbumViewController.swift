@@ -42,13 +42,13 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = DetailAlbumViewController()
-       detailVC.albumTitle = self.albumLabel[indexPath.item]
-        print(detailVC.albumTitle)
+//        let detailVC = DetailAlbumViewController()
+//        detailVC.albumTitle = self.albumLabel[indexPath.item]
+//        print(detailVC.albumTitle)
 //        self.navigationController?.pushViewController(detailVC, animated: true)
-        
-        let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailAlbumViewController")
-        
+
+        let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailAlbumViewController") as! DetailAlbumViewController
+        nextVC.albumTitle = self.albumLabel[indexPath.item]
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
@@ -84,20 +84,20 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
 
         let favorites: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
         
-        let people: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: nil)
+        let selfies: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: nil)
         
         let userAlbum: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: nil)
         
         guard let cameraRollCollection = cameraRoll.firstObject,
             let favoritesCollection = favorites.firstObject,
-            let peopleCollection = people.firstObject,
+            let selfiesCollection = selfies.firstObject,
             let userAlbumCollection = userAlbum.firstObject else {
             return
         }
         
         albumLabel.append(cameraRollCollection.localizedTitle!)
         albumLabel.append(favoritesCollection.localizedTitle!)
-        albumLabel.append(peopleCollection.localizedTitle!)
+        albumLabel.append(selfiesCollection.localizedTitle!)
         albumLabel.append(userAlbumCollection.localizedTitle!)
         
         let fetchOptions = PHFetchOptions()
@@ -126,7 +126,7 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
 
         })
         
-        self.fetchResult3 = PHAsset.fetchAssets(in: peopleCollection, options: fetchOptions)
+        self.fetchResult3 = PHAsset.fetchAssets(in: selfiesCollection, options: fetchOptions)
         photoCount.append(fetchResult3.count)
         imageManager.requestImage(for: fetchResult3.object(at: 0),
                                   targetSize: CGSize(width: 170, height: 170),
