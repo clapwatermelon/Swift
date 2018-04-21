@@ -91,7 +91,7 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
         guard let cameraRollCollection = cameraRoll.firstObject,
             let favoritesCollection = favorites.firstObject,
             let selfiesCollection = selfies.firstObject,
-            let userAlbumCollection = userAlbum.firstObject else {
+            let userAlbumCollection = userAlbum.lastObject else {
             return
         }
         
