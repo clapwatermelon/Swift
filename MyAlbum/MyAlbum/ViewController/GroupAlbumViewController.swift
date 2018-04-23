@@ -79,7 +79,7 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func requestCollection() {
-        
+     
         let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
 
         let favorites: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
@@ -91,7 +91,7 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
         guard let cameraRollCollection = cameraRoll.firstObject,
             let favoritesCollection = favorites.firstObject,
             let selfiesCollection = selfies.firstObject,
-            let userAlbumCollection = userAlbum.lastObject else {
+            let userAlbumCollection = userAlbum.firstObject else {
             return
         }
         
