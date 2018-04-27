@@ -79,7 +79,7 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func requestCollection() {
-     
+     /*
         let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
 
         let favorites: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
@@ -147,7 +147,8 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
                                     self.imageArray.append(image!)
                                     
         })
- 
+ */
+        //UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary)
    
     }
 }
