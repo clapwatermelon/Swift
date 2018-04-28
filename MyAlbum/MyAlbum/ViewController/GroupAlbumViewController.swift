@@ -79,27 +79,28 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func requestCollection() {
-     /*
+     
         let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-
-        let favorites: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
-        
-        let selfies: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: nil)
-        
-        let userAlbum: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: nil)
-        
-        guard let cameraRollCollection = cameraRoll.firstObject,
-            let favoritesCollection = favorites.firstObject,
-            let selfiesCollection = selfies.firstObject,
-            let userAlbumCollection = userAlbum.firstObject else {
+//
+//        let favorites: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
+//
+//        let selfies: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: nil)
+//
+//        let userAlbum: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: nil)
+//
+        guard let cameraRollCollection = cameraRoll.firstObject
+//            let favoritesCollection = favorites.firstObject,
+//            let selfiesCollection = selfies.firstObject,
+//            let userAlbumCollection = userAlbum.firstObject
+        else {
             return
         }
         
         albumLabel.append(cameraRollCollection.localizedTitle!)
-        albumLabel.append(favoritesCollection.localizedTitle!)
-        albumLabel.append(selfiesCollection.localizedTitle!)
-        albumLabel.append(userAlbumCollection.localizedTitle!)
-        
+//        albumLabel.append(favoritesCollection.localizedTitle!)
+//        albumLabel.append(selfiesCollection.localizedTitle!)
+//        albumLabel.append(userAlbumCollection.localizedTitle!)
+//
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         
@@ -114,40 +115,40 @@ class GroupAlbumViewController: UIViewController, UICollectionViewDataSource, UI
                                             self.imageArray.append(image!)
                                             
         })
-        
-        self.fetchResult2 = PHAsset.fetchAssets(in: favoritesCollection, options: fetchOptions)
-        photoCount.append(fetchResult2.count)
-        imageManager.requestImage(for: fetchResult2.object(at: 0),
-                                  targetSize: CGSize(width: 170, height: 170),
-                                  contentMode: .aspectFit,
-                                  options: nil,
-                                  resultHandler: { image, _ in
-                                    self.imageArray.append(image!)
+//        
+//        self.fetchResult2 = PHAsset.fetchAssets(in: favoritesCollection, options: fetchOptions)
+//        photoCount.append(fetchResult2.count)
+//        imageManager.requestImage(for: fetchResult2.object(at: 0),
+//                                  targetSize: CGSize(width: 170, height: 170),
+//                                  contentMode: .aspectFit,
+//                                  options: nil,
+//                                  resultHandler: { image, _ in
+//                                    self.imageArray.append(image!)
+//
+//        })
+//        
+//        self.fetchResult3 = PHAsset.fetchAssets(in: selfiesCollection, options: fetchOptions)
+//        photoCount.append(fetchResult3.count)
+//        imageManager.requestImage(for: fetchResult3.object(at: 0),
+//                                  targetSize: CGSize(width: 170, height: 170),
+//                                  contentMode: .aspectFit,
+//                                  options: nil,
+//                                  resultHandler: { image, _ in
+//                                    self.imageArray.append(image!)
+//                                    
+//        })
+//        
+//        self.fetchResult4 = PHAsset.fetchAssets(in: userAlbumCollection, options: fetchOptions)
+//        photoCount.append(fetchResult4.count)
+//        imageManager.requestImage(for: fetchResult4.object(at: 0),
+//                                  targetSize: CGSize(width: 170, height: 170),
+//                                  contentMode: .aspectFit,
+//                                  options: nil,
+//                                  resultHandler: { image, _ in
+//                                    self.imageArray.append(image!)
+//                                    
+//        })
 
-        })
-        
-        self.fetchResult3 = PHAsset.fetchAssets(in: selfiesCollection, options: fetchOptions)
-        photoCount.append(fetchResult3.count)
-        imageManager.requestImage(for: fetchResult3.object(at: 0),
-                                  targetSize: CGSize(width: 170, height: 170),
-                                  contentMode: .aspectFit,
-                                  options: nil,
-                                  resultHandler: { image, _ in
-                                    self.imageArray.append(image!)
-                                    
-        })
-        
-        self.fetchResult4 = PHAsset.fetchAssets(in: userAlbumCollection, options: fetchOptions)
-        photoCount.append(fetchResult4.count)
-        imageManager.requestImage(for: fetchResult4.object(at: 0),
-                                  targetSize: CGSize(width: 170, height: 170),
-                                  contentMode: .aspectFit,
-                                  options: nil,
-                                  resultHandler: { image, _ in
-                                    self.imageArray.append(image!)
-                                    
-        })
- */
         //UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary)
    
     }
