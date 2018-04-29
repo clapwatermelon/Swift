@@ -153,6 +153,7 @@ class MasterViewController: UITableViewController {
                 let collection = userCollections.object(at: indexPath.row)
                 cell.textLabel!.text = collection.localizedTitle
                 return cell
+
         }
     }
 

@@ -8,11 +8,19 @@
 
 import UIKit
 
-class GroupPhotosCollectionViewCell: UICollectionViewCell {
+class ThumbnailCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var photoCount: UILabel!
-    @IBOutlet weak var groupLabel: UILabel!
+    @IBOutlet weak var tumbnailLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    var representedAssetIdentifier: String!
+    
+    var thumbnailImage: UIImage! {
+        didSet {
+            imageView.image = thumbnailImage
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -13,7 +13,7 @@
         <!--앨범-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="DetailAlbumViewController" id="BYZ-38-t0r" customClass="DetailAlbumViewController" customModule="MyAlbum" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailAlbumViewController" id="BYZ-38-t0r" customClass="GridViewController" customModule="MyAlbum" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailCell" id="XqO-ZG-HH9" customClass="DetailPhotoCollectionViewCell" customModule="MyAlbum" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DetailCell" id="XqO-ZG-HH9" customClass="GridViewCell" customModule="MyAlbum" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="118" height="118"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -87,7 +87,7 @@
         <!--앨범-->
         <scene sceneID="DSr-WS-CVU">
             <objects>
-                <viewController id="cXR-Of-tbq" customClass="GroupAlbumViewController" customModule="MyAlbum" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cXR-Of-tbq" customClass="TumbnailViewController" customModule="MyAlbum" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lwd-we-FRJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,7 +102,7 @@
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GroupCell" id="5eu-bz-XuO" customClass="GroupPhotosCollectionViewCell" customModule="MyAlbum" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GroupCell" id="5eu-bz-XuO" customClass="ThumbnailCollectionViewCell" customModule="MyAlbum" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="170" height="230"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -130,9 +130,9 @@
                                             </subviews>
                                         </view>
                                         <connections>
-                                            <outlet property="groupLabel" destination="4sl-0m-3dE" id="BJW-ei-gPp"/>
                                             <outlet property="imageView" destination="Svy-gC-5KD" id="s4a-dR-8yz"/>
                                             <outlet property="photoCount" destination="QXV-E0-3n7" id="g6d-J3-y4z"/>
+                                            <outlet property="tumbnailLabel" destination="4sl-0m-3dE" id="BJW-ei-gPp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
