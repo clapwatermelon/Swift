@@ -39,12 +39,7 @@ class TumbnailViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         photoAuthorization()
-        // Create a PHFetchResult object for each section in the table view.
-//        let allPhotosOptions = PHFetchOptions()
-//        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-//        allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
-//        smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
-//        userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
+        
         
     }
 
@@ -59,7 +54,7 @@ class TumbnailViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell: ThumbnailCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ThumbnailCollectionViewCell else { fatalError("unexpected cell in collection view") }
-        let asset: PHAsset = fetchResult.object(at: indexPath.item)
+        let asset = fetchResult.object(at: indexPath.item)
      
     
         // Request an image for the asset from the PHCachingImageManager.
@@ -117,7 +112,14 @@ class TumbnailViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func requestCollection() {
-//
+        // Create a PHFetchResult object for each section in the table view.
+        //        let allPhotosOptions = PHFetchOptions()
+        //        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        //        allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
+        //        smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
+        //        userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
+        
+        
         let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
 
         guard let cameraRollCollection = cameraRoll.firstObject
