@@ -80,7 +80,7 @@ class TumbnailViewController: UIViewController, UICollectionViewDataSource, UICo
 //        print(detailVC.albumTitle)
 //        self.navigationController?.pushViewController(detailVC, animated: true)
 
-        let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailAlbumViewController") as! GridViewController
+        let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GridViewController") as! GridViewController
         nextVC.albumTitle = self.albumLabel[indexPath.item]
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
