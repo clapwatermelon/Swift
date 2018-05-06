@@ -23,6 +23,7 @@ class TumbnailViewController: UIViewController, UICollectionViewDataSource, UICo
         case allPhotos, collection
     }
     
+    
     var allPhotos: PHFetchResult<PHAsset>!
     var smartAlbums: PHFetchResult<PHAssetCollection>!
     var userCollections: PHFetchResult<PHCollection>!
@@ -39,8 +40,13 @@ class TumbnailViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         photoAuthorization()
-        
-        
+        // Create a PHFetchResult object for each section in the table view.
+        let allPhotosOptions = PHFetchOptions()
+        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
+        smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
+        userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
+  
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -48,26 +54,39 @@ class TumbnailViewController: UIViewController, UICollectionViewDataSource, UICo
         
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       // return self.imageArray.count
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        //let asset = fetchResult.object(at: indexPath.item)
         guard let cell: ThumbnailCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? ThumbnailCollectionViewCell else { fatalError("unexpected cell in collection view") }
-        let asset = fetchResult.object(at: indexPath.item)
-     
-    
-        // Request an image for the asset from the PHCachingImageManager.
-        //cell.representedAssetIdentifier = asset.localIdentifier
-        imageManager.requestImage(for: asset, targetSize: CGSize(width: 170, height: 170), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
-            // The cell may have been recycled by the time this handler gets called;
-            // set the cell's thumbnail image only if it's still showing the same asset.
-            //if cell.representedAssetIdentifier == asset.localIdentifier {
-                cell.thumbnailImage = image
-            //}
-        })
-   
-        return cell
+        
+        switch Albums(rawValue: indexPath.item)! {
+        case .allPhotos:
+            cell.tumbnailLabel.text = NSLocalizedString("All Photos", comment: "")
+            print("11")
+            return cell
+        case .smartAlbums:
+            let collection = smartAlbums.object(at: indexPath.item)
+            cell.tumbnailLabel.text = collection.localizedTitle
+            print("22")
+            return cell
+        case .userCollections:
+            let collection = userCollections.object(at: indexPath.item)
+            cell.tumbnailLabel.text = collection.localizedTitle
+            print(collection.localizedTitle)
+            return cell
+        }
+//        imageManager.requestImage(for: asset, targetSize: CGSize(width: 170, height: 170), contentMode: .aspectFill, options: nil, resultHandler: { image, _ in
+//            // The cell may have been recycled by the time this handler gets called;
+//            // set the cell's thumbnail image only if it's still showing the same asset.
+//            //if cell.representedAssetIdentifier == asset.localIdentifier {
+//                cell.thumbnailImage = image
+//            //}
+//        })
+//
+        //return cell
 //        cell.groupLabel.text = albumLabel[indexPath.item]
 //        cell.photoCount.text = String(photoCount[indexPath.item])
         //cell.imageView.image = imageArray[indexPath.item]
@@ -112,37 +131,30 @@ class TumbnailViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func requestCollection() {
-        // Create a PHFetchResult object for each section in the table view.
-        //        let allPhotosOptions = PHFetchOptions()
-        //        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        //        allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
-        //        smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
-        //        userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
-        
-        
-        let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-
-        guard let cameraRollCollection = cameraRoll.firstObject
-        else {
-            return
-        }
-
-        albumLabel.append(cameraRollCollection.localizedTitle!)
-
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-
-        self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions)
-        photoCount.append(fetchResult.count)
-
-        imageManager.requestImage(for: fetchResult.object(at: 0),
-                                          targetSize: CGSize(width: 170, height: 170),
-                                          contentMode: .aspectFit,
-                                          options: nil,
-                                          resultHandler: { image, _ in
-                                            self.imageArray.append(image!)
-
-        })
+       
+//        let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
+//
+//        guard let cameraRollCollection = cameraRoll.firstObject
+//        else {
+//            return
+//        }
+//
+//        albumLabel.append(cameraRollCollection.localizedTitle!)
+//
+//        let fetchOptions = PHFetchOptions()
+//        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+//
+//        self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOptions)
+//        photoCount.append(fetchResult.count)
+//
+//        imageManager.requestImage(for: fetchResult.object(at: 0),
+//                                          targetSize: CGSize(width: 170, height: 170),
+//                                          contentMode: .aspectFit,
+//                                          options: nil,
+//                                          resultHandler: { image, _ in
+//                                            self.imageArray.append(image!)
+//
+//        })
 
 
    }

@@ -10,6 +10,7 @@ import UIKit
 import Photos
 
 class GridViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
     // MARK: Properties
     var allPhotos: PHFetchResult<PHAsset>!
     var smartAlbums: PHFetchResult<PHAssetCollection>!
@@ -28,21 +29,21 @@ class GridViewController: UIViewController, UICollectionViewDataSource, UICollec
 //        requestCollection()
         
         // Create a PHFetchResult object for each section in the table view.
-        let allPhotosOptions = PHFetchOptions()
-        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-        allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
-        smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
-        userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
-        
+//        let allPhotosOptions = PHFetchOptions()
+//        allPhotosOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+//        allPhotos = PHAsset.fetchAssets(with: allPhotosOptions)
+//        smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
+//        userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
+//        
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fetchResult.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let asset = fetchResult.object(at: indexPath.item)
+        //let asset = fetchResult.object(at: indexPath.item)
         guard let cell: GridViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? GridViewCell else { fatalError("unexpected cell in collection view") }
         
 
