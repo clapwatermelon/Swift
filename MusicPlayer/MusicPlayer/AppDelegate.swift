@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  MusicPlayer
 //
-//  Created by 박수현 on 02/04/2018.
-//  Copyright © 2018 clapwatermelon. All rights reserved.
+//  Created by 박수현 on 11/05/2018.
+//  Copyright © 2018 박수현. All rights reserved.
 //
 
 import UIKit
